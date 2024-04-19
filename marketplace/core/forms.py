@@ -1,7 +1,18 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
+class LoginForm(AuthenticationForm):
+    email = forms.CharField(widget=forms.EmailInput(attrs={
+        'placeholder': 'Your email address',
+        'class': 'w-full py-4 px-6 rounded-xl',
+    }))
+    
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'placeholder': '비밀번호를 입력하시오.',
+        'class': 'w-full py-4 px-6 rounded-xl',
+    }))
+    
 class SignupForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Your username',
