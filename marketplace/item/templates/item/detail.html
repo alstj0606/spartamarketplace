@@ -21,18 +21,18 @@
             {% endif %}
 
             {% if request.user == item.created_by %}
-                <div class="mt-6 p-6 bg-white rounded-xl">
-                    <p>내 상품</p>
-                    <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">수정</a>
-                    <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">삭제</a>
-                </div>
-            {% else %}
-                <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">판매자에게 연락</a>
-            {% endif %}
-        </div>
+            <div class="mt-6 p-6 bg-white rounded-xl">
+                <p>내 상품</p>
+                <a href="{% url 'item:edit' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl">수정</a>
+                <a href="{% url 'item:delete' item.id %}" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-red-500 text-white rounded-xl">삭제</a>
+            </div>
+        {% else %}
+            <a href="#" class="inline-block mt-6 px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">판매자에게 연락</a>
+        {% endif %}
     </div>
-        <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-            <h2 class="mb-12 text-2xl text-center">최근 게시몰</h2>
+</div>
+    <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+        <h2 class="mb-12 text-2xl text-center">최근 게시몰</h2>
 
             <div class="grid grid-cols-3 gap-3">
                 {% for item in related_items %}
